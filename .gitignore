@@ -1,0 +1,19 @@
+# MacOS
+.DS_Store
+
+# Unit tests
+tests
+
+# VSCode
+.vscode
+
+# Debugging
+a.out
+a.out.dSYM
+
+# Object Files
+*.o
+
+# Output Files
+client
+server
