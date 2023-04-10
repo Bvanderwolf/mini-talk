@@ -6,6 +6,7 @@ CLIENT_NAME	= client
 SERVER_NAME	= server
 
 LIBFT	= ./lib/libft
+PRINTF	= ./lib/printf
 
 ifdef SANITIZE
 DFLAGS	= -g -fsanitize=address
@@ -19,8 +20,8 @@ else
 CFLAGS	= -Wunreachable-code -Ofast -Wall -Werror -Wextra
 endif
 
-HEADERS	= -I ./includes -I ${LIBFT}
-LIBS	= ${LIBFT}/libft.a
+HEADERS	= -I ./includes -I ${LIBFT} -I ${PRINTF}
+LIBS	= ${LIBFT}/libft.a ${PRINTF}/libftprintf.a
 
 CLIENT_SRCS	= ${shell find ./srcs/client -iname "*.c"}
 SERVER_SRCS	= ${shell find ./srcs/server -iname "*.c"}
@@ -41,7 +42,10 @@ RESET	= \033[0m
 
 # //= Recipes =//
 
-all: libft ${CLIENT_NAME} ${SERVER_NAME}
+all: libft printf ${CLIENT_NAME} ${SERVER_NAME}
+
+printf:
+	@${MAKE} -C ${PRINTF}
 
 libft:
 	@${MAKE} -C ${LIBFT}
@@ -65,4 +69,4 @@ fclean: clean
 
 re: clean all
 
-.PHONY: all, client, server, clean, fclean, re, libft
+.PHONY: all, client, server, clean, fclean, re, libft, printf

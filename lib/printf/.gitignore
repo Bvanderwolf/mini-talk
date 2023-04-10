@@ -1,0 +1,10 @@
+.DS_Store
+tests
+.vscode
+a.out
+a.out.dSYM
+main.c
+printf_tests.c
+*.o
+description.md
+logging.c
